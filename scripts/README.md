@@ -46,10 +46,20 @@ Hotels, cabs, and other listings are **not** auto-loaded in production bootstrap
 
 Dev illustrative POIs: `npm run api:sync-places` (optional).
 
+## Refresh DB (catalog + news)
+
+```bash
+bash scripts/feed-database.sh
+BTS_IMPORT_PLACES=1 bash scripts/feed-database.sh
+```
+
+Lightsail: from `~/bullettrainbackend` after bootstrap.
+
 ## npm shortcuts
 
 ```bash
 npm run sync-data
 npm run api:sync-news
+npm run api:feed-database
 npm run watch-developments
 ```

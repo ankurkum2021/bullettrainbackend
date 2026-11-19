@@ -1,12 +1,31 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "dev-only-change-me-in-production"
 
-DEBUG = True
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in ("1", "true", "yes", "on")
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+def _env_list(name: str, default: list[str]) -> list[str]:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    return [part.strip() for part in raw.split(",") if part.strip()]
+
+
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-only-change-me-in-production")
+
+DEBUG = _env_bool("DJANGO_DEBUG", default=SECRET_KEY.startswith("dev-only"))
+
+ALLOWED_HOSTS = _env_list(
+    "ALLOWED_HOSTS",
+    ["localhost", "127.0.0.1", "3.110.127.146", "api.bullettrainstation.com"],
+)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -73,10 +92,15 @@ USE_TZ = True
 STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Next.js dev server (tighten in production)
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:3002",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:3002",
-]
+CORS_ALLOWED_ORIGINS = _env_list(
+    "CORS_ALLOWED_ORIGINS",
+    [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://3.110.127.146",
+        "https://bullettrainstation.com",
+        "https://www.bullettrainstation.com",
+    ],
+)
+
+CSRF_TRUSTED_ORIGINS = _env_list("CSRF_TRUSTED_ORIGINS", CORS_ALLOWED_ORIGINS.copy())
