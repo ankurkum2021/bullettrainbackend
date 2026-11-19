@@ -1,0 +1,1 @@
+"""Fetch official sources and upsert NewsArticle rows."""

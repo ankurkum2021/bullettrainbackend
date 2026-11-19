@@ -1,0 +1,8 @@
+backend/env/
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/db.sqlite3
+backend/.env
+.env
+.DS_Store
+*.sqlite3

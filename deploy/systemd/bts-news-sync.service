@@ -1,0 +1,16 @@
+[Unit]
+Description=Bullet Train Station — NHSRCL news sync
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/bullettrainstation/backend
+# Override WorkingDirectory to your Lightsail clone path.
+Environment=DJANGO_SETTINGS_MODULE=config.settings
+EnvironmentFile=-/opt/bullettrainstation/backend/.env
+ExecStart=/opt/bullettrainstation/backend/env/bin/python manage.py sync_news
+# Log to journal; adjust paths if the repo is not under /opt/bullettrainstation.
+
+[Install]
+WantedBy=multi-user.target
