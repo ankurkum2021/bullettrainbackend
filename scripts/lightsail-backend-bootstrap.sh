@@ -47,6 +47,7 @@ echo "==> Installing Python dependencies"
 
 echo "==> Django migrate"
 run_manage migrate --noinput
+run_manage collectstatic --noinput
 
 echo "==> Place taxonomy (listings via admin / your import)"
 run_manage seed_place_kinds

@@ -1,3 +1,4 @@
+import config.admin_branding  # noqa: F401
 from django.contrib import admin
 from django.urls import include, path
 

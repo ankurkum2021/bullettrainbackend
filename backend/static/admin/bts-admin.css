@@ -1,0 +1,107 @@
+/* Bullet Train Station — Django admin skin (aligned with site blues) */
+:root {
+  --bts-navy: #1f3f87;
+  --bts-navy-dark: #152a5c;
+  --bts-accent: #2d6cdf;
+  --bts-bg: #f4f6fb;
+  --bts-surface: #ffffff;
+  --bts-border: #d8e0ef;
+  --bts-muted: #5a6478;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bts-bg);
+}
+
+#header {
+  background: linear-gradient(135deg, var(--bts-navy-dark), var(--bts-navy));
+  color: #fff;
+  border-bottom: 3px solid var(--bts-accent);
+}
+
+#header a:link,
+#header a:visited {
+  color: #fff;
+}
+
+#branding h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+#user-tools {
+  font-weight: 500;
+}
+
+div.breadcrumbs {
+  background: var(--bts-surface);
+  border-bottom: 1px solid var(--bts-border);
+  color: var(--bts-muted);
+}
+
+div.breadcrumbs a {
+  color: var(--bts-navy);
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: var(--bts-navy);
+  color: #fff;
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  background: var(--bts-navy);
+  border-color: var(--bts-navy-dark);
+}
+
+.button:active,
+input[type="submit"]:active,
+.button:focus,
+input[type="submit"]:focus,
+.button:hover,
+input[type="submit"]:hover {
+  background: var(--bts-accent);
+}
+
+#content-main .module {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--bts-border);
+  box-shadow: 0 1px 2px rgb(31 63 135 / 6%);
+}
+
+#content {
+  max-width: 1200px;
+}
+
+a:link,
+a:visited {
+  color: var(--bts-accent);
+}
+
+#changelist-filter h2 {
+  background: var(--bts-navy-dark);
+}
+
+.login #header {
+  background: var(--bts-navy);
+}
+
+.login #container {
+  border-radius: 12px;
+  border: 1px solid var(--bts-border);
+  box-shadow: 0 8px 24px rgb(31 63 135 / 12%);
+}
+
+#bts-admin-tagline {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  font-weight: 500;
+  margin: 2px 0 0;
+}

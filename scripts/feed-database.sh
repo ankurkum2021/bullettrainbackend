@@ -28,6 +28,7 @@ echo "==> feed-database"
 echo "    Root: $ROOT"
 
 run_manage migrate --noinput
+run_manage collectstatic --noinput
 
 echo "==> Place kinds"
 run_manage seed_place_kinds
